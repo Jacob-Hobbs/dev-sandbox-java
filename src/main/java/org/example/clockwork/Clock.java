@@ -63,8 +63,11 @@ public class Clock {
 
     // internal clock logic
     protected void clockWork() {
-
-
+        ClockBuilder clockBuilder = new ClockBuilder();
+        String hour = String.valueOf(clockBuilder.getHourHand().getHours());
+        String minute = String.valueOf(clockBuilder.getMinuteHand().getMinutes());
+        String second = String.valueOf(clockBuilder.getSecondHand().getSeconds());
+        System.out.println("Current Time: " + hour + ":" + minute + ":" + second);
     }
 
 

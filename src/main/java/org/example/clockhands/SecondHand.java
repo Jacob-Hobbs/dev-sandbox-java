@@ -5,7 +5,7 @@ import org.example.clockhands.ClockHand;
 public class SecondHand implements ClockHand {
 
     private int seconds;
-    private final MinuteHand minuteHand;
+    private MinuteHand minuteHand;
 
     public SecondHand(MinuteHand minuteHand) {
         this.seconds = 0;

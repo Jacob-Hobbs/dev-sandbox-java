@@ -1,5 +1,6 @@
 package org.example.clockhands;
 
+import org.example.clockwork.ClockBuilder;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -7,30 +8,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class HourHandTest {
 
     @Test
-    void givenAddedHourBeforeTwentyTwo_whenIterate_thenHourAddedSuccessfully() {
-        var minuteHand = new MinuteHand();
-        var hourHand = new HourHand(minuteHand);
+    void givenAddedHourBeforeTwentyThree_whenIterate_thenHourAddedSuccessfully() {
+        ClockBuilder clockBuilder = new ClockBuilder();
+        HourHand hourHand = clockBuilder.getHourHand();
         hourHand.setHours(22);
         hourHand.iterate();
         assertEquals(23, hourHand.getHours());
     }
 
     @Test
-    void givenAddedMinuteAtTwentyFour_whenIterate_thenHourAddedSuccessfully() {
-        var minuteHand = new MinuteHand();
-        var hourHand = new HourHand(minuteHand);
-        hourHand.setHours(24);
+    void givenAddedHourAtTwentyThree_whenIterate_thenHourSetToZero() {
+        ClockBuilder clockBuilder = new ClockBuilder();
+        HourHand hourHand = clockBuilder.getHourHand();
+        hourHand.setHours(23);
         hourHand.iterate();
         assertEquals(0, hourHand.getHours());
     }
 
-    @Test
-    void givenAddedHourAtTwentyFour_whenIterate_thenSecondIteratesSuccessfully() {
-        var minuteHand = new MinuteHand();
-        var hourHand = new HourHand(minuteHand);
-        hourHand.setHours(24);
-        hourHand.iterate();
-        assertEquals(1, hourHand.getSecondHand().getSeconds());
-    }
 
 }
