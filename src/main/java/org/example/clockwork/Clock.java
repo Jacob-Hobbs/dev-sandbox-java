@@ -30,11 +30,11 @@ public class Clock {
 
     // set second, minute, and hour hands to chosen times when clock object is instantiated
     private void initializeClockHands() {
-        this.secondHand = new SecondHand();
+        this.secondHand = new SecondHand(minuteHand);
         secondHand.setSeconds(setTimeUnits('S'));
         this.minuteHand = new MinuteHand();
         minuteHand.setMinutes(setTimeUnits('M'));
-        this.hourHand = new HourHand();
+        this.hourHand = new HourHand(minuteHand);
         hourHand.setHours(setTimeUnits('H'));
     }
 

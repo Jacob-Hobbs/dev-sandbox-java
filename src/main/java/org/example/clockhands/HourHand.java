@@ -5,9 +5,12 @@ import org.example.clockhands.ClockHand;
 public class HourHand implements ClockHand {
 
     private int hours;
-    private SecondHand secondHand;
+    private final SecondHand secondHand;
 
-    public HourHand() {}
+    public HourHand(MinuteHand minuteHand) {
+        this.hours = 0;
+        this.secondHand = new SecondHand(minuteHand);
+    }
 
     @Override
     public void iterate() {
@@ -29,5 +32,9 @@ public class HourHand implements ClockHand {
 
     public void setHours(int newHours) {
         this.hours = newHours;
+    }
+
+    public SecondHand getSecondHand() {
+        return this.secondHand;
     }
 }
