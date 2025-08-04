@@ -12,35 +12,35 @@ public class Clock {
 
     private String currentTime;
     private static String startTime;
-    private SecondHand secondHand;
-    private MinuteHand minuteHand;
-    private HourHand hourHand;
+
+    private final ClockBuilder clockBuilder;
 
     // constructor for no start time clock
     protected Clock() {
         startTime = "00:00:00";
+        this.clockBuilder = new ClockBuilder();
         initializeClockHands();
     }
 
     // constructor for specified start time clock
     protected Clock(String startTime) {
+        this.clockBuilder = new ClockBuilder();
         Clock.startTime = startTime;
         initializeClockHands();
     }
 
     // set second, minute, and hour hands to chosen times when clock object is instantiated
     private void initializeClockHands() {
-        this.secondHand = new SecondHand(minuteHand);
-        secondHand.setSeconds(setTimeUnits('S'));
-        this.minuteHand = new MinuteHand();
-        minuteHand.setMinutes(setTimeUnits('M'));
-        this.hourHand = new HourHand(minuteHand);
-        hourHand.setHours(setTimeUnits('H'));
+        this.clockBuilder.getSecondHand().setSeconds(setTimeUnits('S'));
+        this.clockBuilder.getMinuteHand().setMinutes(setTimeUnits('M'));
+        this.clockBuilder.getHourHand().setHours(setTimeUnits('H'));
     }
 
     // return current time as String to terminal
     protected String printTime() {
-        return "Time: " + secondHand.getSeconds() + ":" + minuteHand.getMinutes() + ":" + hourHand.getHours();
+        return "Time: " + this.clockBuilder.getHourHand().getHours() + ":"
+                + this.clockBuilder.getMinuteHand().getMinutes() + ":"
+                + this.clockBuilder.getSecondHand().getSeconds();
     }
 
     private static int setTimeUnits(char unit) {
@@ -63,12 +63,8 @@ public class Clock {
 
     // internal clock logic
     protected void clockWork() {
-        ClockBuilder clockBuilder = new ClockBuilder();
-        String hour = String.valueOf(clockBuilder.getHourHand().getHours());
-        String minute = String.valueOf(clockBuilder.getMinuteHand().getMinutes());
-        String second = String.valueOf(clockBuilder.getSecondHand().getSeconds());
-        System.out.println("Current Time: " + hour + ":" + minute + ":" + second);
-    }
+        // TODO: implement this method
 
+    }
 
 }
