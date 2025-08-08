@@ -25,5 +25,4 @@ class HourHandTest {
         assertEquals(0, hourHand.getHours());
     }
 
-
 }

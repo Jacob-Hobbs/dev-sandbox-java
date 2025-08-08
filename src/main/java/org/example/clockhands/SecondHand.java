@@ -2,6 +2,7 @@ package org.example.clockhands;
 
 import org.example.clockhands.ClockHand;
 
+//SecondHand class
 public class SecondHand implements ClockHand {
 
     private int seconds;

@@ -63,8 +63,14 @@ public class Clock {
 
     // internal clock logic
     protected void clockWork() {
-        // TODO: implement this method
+        System.out.println(printTime()); // print out initial time
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        Runnable task = () -> {
+            clockBuilder.getSecondHand().iterate(); // increment secondHand
+            System.out.println(printTime()); // print out time
+        };
 
+        scheduler.scheduleAtFixedRate(task, 0, 1, TimeUnit.SECONDS);
     }
 
 }
